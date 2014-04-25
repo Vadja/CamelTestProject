@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://camel.apache.org/schema/spring
+http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="tcp://localhost:61616"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="test" class="com.camel.test.DoProcess"/>
+
+    <camelContext id="context" xmlns="http://camel.apache.org/schema/spring">
+        <route>
+            <from uri="file://C:/test/data/input?noop=true"/>
+            <doTry>
+                <to uri="validator:validation.xsd"/>
+                <split>
+                    <tokenize token="item" xml="true"/>
+                    <log message="${body}"/>
+                    <setHeader headerName="ItemID">
+                        <xpath>
+                            /item/@id
+                        </xpath>
+                    </setHeader>
+                    <setHeader headerName="CamelFileName">
+                        <simple>${header.ItemID}.xml</simple>
+                    </setHeader>
+                    <to uri="file://C:/test/data/output/splitedData"/>
+                </split>
+                <to uri="xslt:transformation.xsl"/>
+                <to uri="file://C:/test/data/output?fileName=outputData.html"/>
+                <doCatch>
+                    <exception>org.apache.camel.ValidationException</exception>
+                </doCatch>
+            </doTry>
+        </route>
+    </camelContext>
+
+</beans>
