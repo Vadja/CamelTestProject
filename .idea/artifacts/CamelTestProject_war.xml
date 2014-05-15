@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CamelTestProject:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="CamelActivemqTest-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="CamelTestProject:war exploded" />
+    </root>
+  </artifact>
+</component>

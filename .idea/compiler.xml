@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="CamelActiveMQTest" />
         <module name="CamelTest" />
+        <module name="CamelTestProject" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
