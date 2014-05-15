@@ -19,7 +19,7 @@ http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <camelContext id="context" xmlns="http://camel.apache.org/schema/spring">
         <route>
-            <from uri="file://C:/test/data/input?noop=true"/>
+            <from uri="file:data?noop=true"/>
             <doTry>
                 <to uri="validator:validation.xsd"/>
                 <split>
@@ -33,10 +33,10 @@ http://camel.apache.org/schema/spring/camel-spring.xsd">
                     <setHeader headerName="CamelFileName">
                         <simple>${header.ItemID}.xml</simple>
                     </setHeader>
-                    <to uri="file://C:/test/data/output/splitedData"/>
+                    <to uri="file:data/output/splitedData"/>
                 </split>
                 <to uri="xslt:transformation.xsl"/>
-                <to uri="file://C:/test/data/output?fileName=outputData.html"/>
+                <to uri="file:data/output?fileName=outputData.html"/>
                 <doCatch>
                     <exception>org.apache.camel.ValidationException</exception>
                 </doCatch>
