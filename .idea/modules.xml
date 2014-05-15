@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CamelActiveMQTest.iml" filepath="$PROJECT_DIR$/CamelActiveMQTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CamelTestProject.iml" filepath="$PROJECT_DIR$/CamelTestProject.iml" />
     </modules>
   </component>
 </project>
