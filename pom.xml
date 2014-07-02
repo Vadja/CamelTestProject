@@ -48,7 +48,8 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.0.3.RELEASE</version>        </dependency>
+            <version>4.0.3.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
